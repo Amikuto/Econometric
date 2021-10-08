@@ -8,13 +8,14 @@ data <- read_xlsx("./2oct/data/data.xlsx")
 y <- data$Y
 x <- data$X
 
-#Остатки
-e <- sm$residuals
-e
 
 m <- lm(Y~X, data = data)
 sm <- summary(m)
 sm
+
+#Остатки
+e <- sm$residuals
+e
 
 
 #1
@@ -39,7 +40,7 @@ plot(res)
 #3
 plot(x, y)
 # par(new=TRUE)
-plot(res, add=TRUE)
+# plot(res, add=TRUE)
 
 
 
