@@ -49,7 +49,7 @@ s2 <- summary(m2)
 
 
 #устранение автокорреляции, если известно значение р
-DW <- dw$statistic
-p <- 1-DW/2
+# DW <- dw$statistic
+# p <- 1-DW/2
 # y4 <-
 
