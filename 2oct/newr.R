@@ -8,13 +8,15 @@ data <- read_xlsx("./2oct/data/data.xlsx")
 y <- data$Y
 x <- data$X
 
-#Остатки
-e <- sm$residuals
-e
+
 
 m <- lm(Y~X, data = data)
 sm <- summary(m)
 sm
+
+#Остатки
+e <- sm$residuals
+e
 
 
 #1
