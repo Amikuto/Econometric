@@ -60,5 +60,15 @@ ci.lower <- beta - qt(0.975, df = smlm$fstatistic[["dendf"]]) * SE
 ci.upper <- beta + qt(0.975, df = smlm$fstatistic[["dendf"]]) * SE
 
 
+#6
+beta
 
+# TODO: delta
+delta <- NA
+
+elastichnost <- c(
+  smlm$coefficients[2] * mean(x1) / mean(y),
+  smlm$coefficients[3] * mean(x2) / mean(y),
+  smlm$coefficients[4] * mean(x3) / mean(y)
+)
 
