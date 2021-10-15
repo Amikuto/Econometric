@@ -9,6 +9,7 @@ y <- data$Y
 x <- data$X
 
 
+
 m <- lm(Y~X, data = data)
 sm <- summary(m)
 sm
@@ -40,7 +41,7 @@ plot(res)
 #3
 plot(x, y)
 # par(new=TRUE)
-# plot(res, add=TRUE)
+plot(res, add=TRUE)
 
 
 
