@@ -41,6 +41,13 @@ m <- lm(y ~ x1 + x3)
 sm <- summary(m)
 sm
 
+# Тест на длинную и короткую регрессию
+r_long <- summary(lm(y ~ x1+x2+x3))$r.squared
+r_short <- sm$r.squared
+F_see <- ((r_long - r_short) / (1-r_long)) * ((length(y) - 4) / 1)
+F_see < 3.87
+
+
 #3
 slm1_r_squared <- slm1$r.squared
 slm1_r_squared
@@ -162,3 +169,17 @@ gq <- gqtest(m, order.by = x1, fraction = 0.5)
 bp <- bptest(m, studentize = TRUE)
 
 
+#8
+
+aov_model <- aov(y ~ x1+x3)
+aov_model_p <- aov(y ~ x1)
+
+saov <- summary(aov_model)
+saovp <- summary(aov_model_p)
+
+library(AICcmodavg)
+
+model.set <- list(aov_model, aov_model_p)
+model.names <- c("Множественная", "Парная")
+
+aictab(model.set, modnames = model.names)
