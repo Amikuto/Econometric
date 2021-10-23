@@ -1,3 +1,5 @@
+library("lmtest")
+
 x1 <- c(1, 2, 3, 5)
 x2 <- c(0, 1, 3, 4)
 y <- c(6, 11, 19, 28)
@@ -65,4 +67,27 @@ beta <- c(sm$coefficients[2] * Sdx1/Sdy, sm$coefficients[3] * Sdx2/Sdy) #
 delta <- c(rx1 * sm$coefficients[2] / sm$r.squared,
            rx2 * sm$coefficients[3] / sm$r.squared)
 
-# TODO: длинная и которая регрессия
+
+
+
+#Тест Дарбина-Уотсона
+s1 <- c(0.47, 0.28, 1.19, 1, 2.41, 2.72, 2.23, 4.04, 3.35, 5.26, 6.47, 5.28, 5.59, 9.1, 9.51, 7.12)
+Ydi <- c(4.013, 5.12, 7.327, 10.133, 13.44, 18.147, 19.553, 22.46, 29.167, 30.973, 39.18, 43.687, 50.393, 55.1, 61.207, 63.213)
+
+dw <- dwtest(m) # автокорреляция первого порядка отсутствует
+bg <- bgtest(m, order = 1)
+bgF <- bgtest(m, order = 1, type = "F")
+
+
+#GQtest
+# gq <- gqtest(y ~ x1 + x2)
+# pv<a => присутствует проблема гетероскедастичности
+
+#BPtest
+bp = bptest(m, data=data);bp
+# pv<a => присутствует проблема гетероскедастичности
+
+#White_test
+wt = bptest(m, data=data, varformula=~Yd + I(Yd^2), studentize=TRUE);wt
+
+
