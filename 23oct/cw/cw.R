@@ -7,7 +7,6 @@ library(tseries)
 
 # data <- read.table('./23oct/cw/data/data.txt', encoding = "UTF-8", header = TRUE)
 data <- read_xlsx('./23oct/cw/data/data.xlsx')
-
 # data <- read_xlsx('./23oct/cw/data/information.xlsx')
 
 x <- data$"Год"

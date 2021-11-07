@@ -171,15 +171,15 @@ bp <- bptest(m, studentize = TRUE)
 
 #8
 
-aov_model <- aov(y ~ x1+x3)
-aov_model_p <- aov(y ~ x1)
-
-saov <- summary(aov_model)
-saovp <- summary(aov_model_p)
-
-library(AICcmodavg)
-
-model.set <- list(aov_model, aov_model_p)
-model.names <- c("Множественная", "Парная")
-
-aictab(model.set, modnames = model.names)
+# aov_model <- aov(y ~ x1+x3)
+# aov_model_p <- aov(y ~ x1)
+#
+# saov <- summary(aov_model)
+# saovp <- summary(aov_model_p)
+#
+# library(AICcmodavg)
+#
+# model.set <- list(aov_model, aov_model_p)
+# model.names <- c("Множественная", "Парная")
+#
+# aictab(model.set, modnames = model.names)
