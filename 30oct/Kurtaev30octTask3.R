@@ -2,6 +2,7 @@ library(lmtest)
 library(binom)
 library(forecast)
 library(tseries)
+require(readxl)
 
 data <- read_xlsx('./30oct/data.xlsx')
 
