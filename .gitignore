@@ -89,4 +89,4 @@ fabric.properties
 venv/*
 ~*.docx
 ~*.tmp
-/2oct/art.R
+/oct/2oct/art.R
