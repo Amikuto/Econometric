@@ -26,7 +26,7 @@ bp <- bptest(m);bp
 
 dw <- dwtest(m);dw
 
-p <- dw$statistic/2 - 1; p
+p <- 1 - dw$statistic/2; p
 
 y2 <- y[2:55] - p*y[1:54]
 y2
@@ -47,5 +47,5 @@ dw <- dwtest(m2); dw
 bg <- bgtest(m2, order = 1, order.by = NULL);bg
 bg <- bgtest(m2, order = 2, order.by = NULL);bg
 
-gq <- gqtest(m2, fraction=0.4);gq
+gq <- gqtest(m2, fraction=0.25);gq
 bp <- bptest(m2);bp
