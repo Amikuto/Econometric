@@ -29,6 +29,37 @@ x3_l <- x3[21:22]
 x4_c <- x4[1:20]
 x4_l <- x4[21:22]
 
+data_control <- data[1:20, ]
+data_learning <- data[21:22, ]
+
+lm_control <- lm(y ~ x1+x2+x3+x4, data=data_control)
+summary(lm_control)
+
+#Среднее
+predict(lm_control, newdata = data_learning, interval = "confidence")
+#Индивидуально
+predict(lm_control, newdata = data_learning, interval = "prediction")
+
+
+cor(data_control)
+
+
+#БЕЗ Х3
+lm_without_x3 <- lm(y ~ x1+x2+x4)
+summary(lm_without_x3)
+
+#Среднее
+predict(lm_without_x3, newdata = data_learning, interval = "confidence")
+#Индивидуально
+predict(lm_without_x3, newdata = data_learning, interval = "prediction")
+
+
+
+
+
+
+
+
 
 lm_c <- lm(y_c ~ x1_c + x2_c + x3_c + x4_c)
 slm_c <- summary(lm_c); slm_c
@@ -89,10 +120,10 @@ predict(lm_parn, newdata = c, interval = "confidence")
 #Индивидуально
 predict(lm_parn, newdata = c, interval = "prediction")
 
-# m <- lm(y~x1+x2+x3+x4, data = o)
+
 #Тест Чоу
-library(qpcR)
-o <- train <- data[1:20,]
+# library(qpcR)
+o <- data[1:20,]
 o1 <- o[1:10, ]
 o2 <- o[11:20, ]
 m <- lm(y~x1+x2+x3+x4, data = o)
