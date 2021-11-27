@@ -3,6 +3,7 @@ require(readxl)
 library(orcutt)
 library(sandwich)
 library(gap)
+if(!require(tseries)){install.packages('tseries')}
 
 # data <- read.table('./nov/20.11/tema7.csv', dec=',', header=TRUE)
 data <- read_xlsx("./nov/20.11/tema7.xlsx")
@@ -148,3 +149,53 @@ qf(0.95,k+1,n1+n2-2*(k+1))
 
 # H0 - верна
 # выборки однородны
+
+
+
+
+# p-value близится к 1 = принимаем Н0, остатки нормально распределены
+jarque.bera.test(slm_c$residuals)
+
+
+
+
+cor(data)
+
+
+parn <- data.frame(y_c, x4_c)
+lm_parn <- lm(parn)
+summary(lm_parn)
+
+# Если нормально распределены, то F
+# иначе - Chi
+waldtest(lm_parn, lm_c, test='F')
+n <- 20
+q <- 3 # кол-во удаляемых факторов
+k <- 4 # кол-во иксов
+m <- k+1
+
+# F_набл > F_табл => регрессия без ограничений предпочтительнее, т.е. гипотеза Н0 отвергается
+# Гипотеза Н0 - Бетта коэфициенты модели равны нулю
+# Гипотеза Н1 - сумма квадратов Бетта коэфициентов модели больше нуля
+# Бетта коэфициенты - различающиеся коэфициенты модели (т.е. в нашем случае х1, х2, х3)
+qf(0.95,q,n-m)
+
+
+resettest(lm_c)
+
+y_predict <- predict(lm_c)
+yp2 <- y_predict^2
+yp3 <- y_predict^3
+m4 <- lm(y_c~x1_c+x2_c+x3_c+x4_c+yp2+yp3)
+sm4 <- summary(m4); sm4
+residuals4 <- m4$residuals; residuals4
+RSS4 <- sum(residuals4^2); RSS4
+
+n <- 20
+q2 <- 2 #кол-во удаляемых факторов
+k <- 4
+k2 <- k+2
+m2 <- k2+1
+F <- (RSS-RSS4)*(n-m2)/q2/RSS4; F
+
+
