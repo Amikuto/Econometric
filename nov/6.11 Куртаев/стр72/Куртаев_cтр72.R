@@ -1,7 +1,7 @@
 library(lmtest)
 require(readxl)
 
-data <- read_xlsx('./nov/6nov/стр72/data_page72.xlsx')
+data <- read_xlsx('./nov/6.11 Куртаев/стр72/data_page72.xlsx')
 data <- data[order(data$Y), ]
 
 y <- data$Y

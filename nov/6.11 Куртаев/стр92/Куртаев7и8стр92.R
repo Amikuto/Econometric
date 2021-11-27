@@ -4,7 +4,7 @@ library(tseries)
 require(readxl)
 library(orcutt)
 
-data <- read_xlsx('./nov/6nov/стр92/data_7and8_page92.xlsx')
+data <- read_xlsx('./nov/6.11 Куртаев/стр92/data_7and8_page92.xlsx')
 data
 
 y <- data$Y; y
