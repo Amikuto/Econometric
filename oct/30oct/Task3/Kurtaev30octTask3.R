@@ -4,7 +4,7 @@ library(forecast)
 library(tseries)
 require(readxl)
 
-data <- read_xlsx('./Task3/data.xlsx')
+data <- read_xlsx('./oct/30oct/Task3/data.xlsx')
 
 x <- data$Year
 y <- data$GDP
