@@ -114,3 +114,19 @@ aic <- data.frame(
 min(aic)
 # Минимальный у модели х1 + х2
 
+
+
+# Прогнозирование
+d_c <- data[1:29, ]
+d_l <- data[30, ]
+
+m_c <- lm('Q ~ I + M + P', data=d_c)
+sm_c <- summary(m_c); sm_c
+
+#Среднее
+predict(m_c, newdata = d_l, interval = "confidence")
+#Индивидуально
+predict(m_c, newdata = d_l, interval = "prediction")
+
+# значения входит в интервал - модель адекватна
+
