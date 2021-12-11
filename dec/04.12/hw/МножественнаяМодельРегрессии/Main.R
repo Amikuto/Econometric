@@ -91,6 +91,42 @@ if (FG > qchisq(p = 0.95, 0.5*k*(k-1))) {
 
 # 2.2 устранение
 
+# анализа матрицы парных корреляций
 cor(data_learning)
 
+
+# t-статистик
+sm
+# у переменной P (x3) наименьшая t-статистика (по модулю), ее удаляем
+m4 <- lm('y ~ x1 + x2')
+sm4 <- summary(m4); sm4
+
+
+# критерий AIC
+aic <- data.frame(
+            AIC(lm('y ~ x1 + x2')),
+            AIC(lm('y ~ x2 + x3')),
+            AIC(lm('y ~ x1 + x3')),
+            AIC(lm('y ~ x1')),
+            AIC(lm('y ~ x2')),
+            AIC(lm('y ~ x3')))
+
+min(aic)
+# Минимальный у модели х1 + х2
+
+
+
+# Прогнозирование
+d_c <- data[1:29, ]
+d_l <- data[30, ]
+
+m_c <- lm('Q ~ I + M + P', data=d_c)
+sm_c <- summary(m_c); sm_c
+
+#Среднее
+predict(m_c, newdata = d_l, interval = "confidence")
+#Индивидуально
+predict(m_c, newdata = d_l, interval = "prediction")
+
+# значения входит в интервал - модель адекватна
 
